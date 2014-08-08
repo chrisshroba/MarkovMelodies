@@ -4,9 +4,52 @@
 	Markov Melodies
 </title>
 <script src="js/pixi.js"></script>
+<style>
+	body { 
+		margin: 0;
+		padding: 0;
+		background-color:#000000;
+	}
+</style>
 </head>
 <body>
 <script>
+	
+	var imgsrc = "bunny.png"
+	
+	var stage = new PIXI.Stage(0x66ff99);
+
+	var renderer = PIXI.autoDetectRenderer(400,300);
+
+	document.body.appendChild(renderer.view);
+
+	requestAnimFrame(animate);
+	
+	var texture = PIXI.Texture.fromImage(imgsrc);
+
+	var bunny = new PIXI.Sprite(texture);
+
+	bunny.anchor.x = .5;
+	bunny.anchor.y = .5;
+
+	bunny.position.x = 200;
+	bunny.position.y = 150;
+
+	stage.addChild(bunny);
+
+
+
+	var i=0;
+	
+	function animate() { 
+
+		requestAnimFrame( animate );
+		i++;
+		bunny.rotation+=Math.PI*2/3;
+		document.title=i;
+		renderer.render(stage);
+
+	}
 
 </script>
 </body>
